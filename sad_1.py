@@ -5,7 +5,7 @@ import math
 
 NUM_LEDS = 16
 pixels = neopixel.NeoPixel(board.D18, NUM_LEDS, auto_write=False)
-sad_color = (0, 0, 180)  # Deep calm blue
+sad_color = (0, 0, 180)  
 
 def sadness_fade(color, steps=50, delay=0.035):
     while True:
