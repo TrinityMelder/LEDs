@@ -21,5 +21,5 @@ def flickering_snake(color, delay_range=(0.03, 0.07)):
         time.sleep(random.uniform(*delay_range))
 
 while True:
-    flickering_snake((90, 0, 130))  # Deep purple with jittery speed
-    time.sleep(random.uniform(0.1, 0.3))  # Uneasy pauses
+    flickering_snake((90, 0, 130))  
+    time.sleep(random.uniform(0.1, 0.3))  
