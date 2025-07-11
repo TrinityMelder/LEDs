@@ -5,7 +5,7 @@ import math
 
 NUM_LEDS = 16
 pixels = neopixel.NeoPixel(board.D18, NUM_LEDS, auto_write=False)
-joy_color = (255, 255, 0)  # Bright yellow
+joy_color = (255, 255, 0) 
 
 def joy_pulse(color, steps=40, delay=0.015):
     while True:
