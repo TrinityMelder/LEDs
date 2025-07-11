@@ -1,27 +1,19 @@
 import board
 import neopixel
 import time
+import math
 
 NUM_LEDS = 16
-GROUP_SIZE = 4
 pixels = neopixel.NeoPixel(board.D18, NUM_LEDS, auto_write=False)
+joy_color = (255, 255, 0)  # Bright yellow
 
-blue = (0, 0, 255)
-off = (0, 0, 0)
-
-def bounce(color, group_size=GROUP_SIZE, delay=0.15):
+def joy_pulse(color, steps=40, delay=0.015):
     while True:
-        # Forward
-        for i in range(NUM_LEDS - group_size + 1):
-            pixels.fill(off)
-            for j in range(group_size):
-                pixels[i + j] = color
+        for i in range(steps):
+            brightness = math.sin(i / steps * math.pi)
+            scaled_color = tuple(int(c * brightness) for c in color)
+            pixels.fill(scaled_color)
             pixels.show()
             time.sleep(delay)
-        # Backward
-        for i in reversed(range(NUM_LEDS - group_size + 1)):
-            pixels.fill(off)
-            for j in range(group_size):
-                pixels[i + j] = color
-            pixels.show()
-            time.sleep(delay)
+
+joy_pulse(joy_color)
