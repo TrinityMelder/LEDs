@@ -40,4 +40,3 @@ def joy_blink(color, blink_times=2, blink_delay=0.2):
 while True:
     joy_snake(joy_color, loops=2)
     joy_blink(joy_color, blink_times=2)
-
