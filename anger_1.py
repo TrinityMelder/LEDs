@@ -1,34 +1,24 @@
 import board
 import neopixel
 import time
-import random
 
 NUM_LEDS = 16
 pixels = neopixel.NeoPixel(board.D18, NUM_LEDS, auto_write=False)
 
-def anger_burst():
-    
-    for _ in range(3):
-        pixels.fill((255, 0, 0))
+
+base_color = (255, 0, 0)
+brightness_scale = 0.3
+anger_color = tuple(int(c * brightness_scale) for c in base_color)
+
+def anger_blink(color, blink_times=5, on_time=0.04, off_time=0.03):
+    for _ in range(blink_times):
+        pixels.fill(color)
         pixels.show()
-        time.sleep(0.05)
+        time.sleep(on_time)
         pixels.fill((0, 0, 0))
         pixels.show()
-        time.sleep(0.03)
-
-    
-    for _ in range(2):
-        for i in range(NUM_LEDS):
-            pixels.fill((0, 0, 0))
-            pixels[i] = (255, 0, 0)
-            pixels.show()
-            time.sleep(0.02)
-        for i in reversed(range(NUM_LEDS)):
-            pixels.fill((0, 0, 0))
-            pixels[i] = (255, 0, 0)
-            pixels.show()
-            time.sleep(0.02)
+        time.sleep(off_time)
 
 while True:
-    anger_burst()
-    time.sleep(0.1)  
+    anger_blink(anger_color, blink_times=6)
+    time.sleep(0.15)  
