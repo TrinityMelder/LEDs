@@ -13,10 +13,11 @@ def disgusting_flicker():
 
         for _ in range(num_on):
             led = random.randint(0, NUM_LEDS - 1)
-            green_intensity = random.choice([50, 100, 180, 255])  
+            green_intensity = random.choice([15, 30, 55, 76]) 
             pixels[led] = (0, green_intensity, 0)
 
         pixels.show()
         time.sleep(random.uniform(0.15, 0.5))  
 
 disgusting_flicker()
+
